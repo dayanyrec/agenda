@@ -2,7 +2,9 @@ package com.dayanyrec.agenda;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
@@ -16,11 +18,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         List<String> alunos = new ArrayList<>(Arrays.asList("Alex", "Fran", "Day"));
-        TextView primeiroAluno = findViewById(R.id.textView);
-        primeiroAluno.setText(alunos.get(0));
-        TextView segundoAluno = findViewById(R.id.textView2);
-        segundoAluno.setText(alunos.get(1));
-        TextView terceiroAluno = findViewById(R.id.textView3);
-        terceiroAluno.setText(alunos.get(2));
+        ListView listaDeAlunos = findViewById(R.id.activity_main_lista_de_alunos);
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunos);
+        listaDeAlunos.setAdapter(adapter);
     }
 }

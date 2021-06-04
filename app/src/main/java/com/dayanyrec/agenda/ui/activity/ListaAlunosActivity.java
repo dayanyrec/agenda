@@ -29,5 +29,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
         ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunoDao.getAll());
         listaDeAlunos.setAdapter(adapter);
+
+        findViewById(R.id.activity_lista_alunos_fab_novo_aluno).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class));
+            }
+        });
     }
 }

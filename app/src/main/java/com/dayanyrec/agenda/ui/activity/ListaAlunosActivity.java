@@ -1,6 +1,8 @@
 package com.dayanyrec.agenda.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -9,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dayanyrec.agenda.R;
+import com.dayanyrec.agenda.dao.AlunoDao;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,9 +23,11 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
         setTitle("Lista de Alunos");
-        List<String> alunos = new ArrayList<>(Arrays.asList("Alex", "Fran", "Day"));
+
+        AlunoDao alunoDao = new AlunoDao();
+
         ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunos);
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunoDao.getAll());
         listaDeAlunos.setAdapter(adapter);
     }
 }
